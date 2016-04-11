@@ -85,6 +85,7 @@ namespace PerfectParallel.CourseForge.UI
                     MyWindow results = EditorWindow.CreateInstance<MyWindow>();
                     results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
                     results.getResults(output, message);
+                    results.Focus();
                     results.ShowPopup();
                     this.Close();
                 }
@@ -148,6 +149,7 @@ namespace PerfectParallel.CourseForge.UI
                             MyWindow results = EditorWindow.CreateInstance<MyWindow>();
                             results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
                             results.getResults(output, message);
+                            results.Focus();
                             results.ShowPopup();
                             this.Close();
                         }
@@ -190,6 +192,10 @@ namespace PerfectParallel.CourseForge.UI
                 {
                     GUI.Label(new Rect(5, 30, this.position.width - 10, 30),
                             "Please wait...", centeredWrapped);
+                    if (GUI.Button(new Rect(this.position.width / 4 - 20, 30 * (output.Count + 3), 40, 18), "Ok"))
+                    {
+                        this.Close();
+                    }
                 }
             }
         }
