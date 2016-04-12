@@ -35,7 +35,7 @@ namespace PerfectParallel.CourseForge.UI
                 Move(4.2f, 0);
                 if (Button("Open Menu", 1.8f, 0.6f))
                 {
-                    MyWindow window = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 240, 240);
                     window.getBuildLog(optimize.buildLog());
                     window.getMenu(true);
@@ -66,7 +66,7 @@ namespace PerfectParallel.CourseForge.UI
                 Move(2.5f, 0);
                 if (Button("Remove", 1.6f, 0.6f))
                 {
-                    MyWindow window = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
                     window.ShowPopup();
                     List<int> output = new List<int>();
@@ -99,7 +99,7 @@ namespace PerfectParallel.CourseForge.UI
                 Move(2.5f, 0);
                 if (Button("Optimize", 1.6f, 0.6f))
                 {
-                    MyWindow window = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
                     List<int> output = new List<int>();
                     List<string> message = new List<string>();
@@ -117,7 +117,7 @@ namespace PerfectParallel.CourseForge.UI
                 Move(2.5f, 0);
                 if (Button("Optimize", 1.6f, 0.6f))
                 {
-                    MyWindow window = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
                     List<int> output = new List<int>();
                     List<string> message = new List<string>();
@@ -147,7 +147,7 @@ namespace PerfectParallel.CourseForge.UI
                 Move(2.5f, 0);
                 if (Button("Remove", 1.6f, 0.6f))
                 {
-                    MyWindow window = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
                     List<int> output = new List<int>();
                     List<string> message = new List<string>();

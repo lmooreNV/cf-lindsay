@@ -8,7 +8,7 @@ using PerfectParallel.CourseForge.UI;
 
 namespace PerfectParallel.CourseForge.UI
 {
-    public class MyWindow : EditorWindow
+    public class AndroidWindow : EditorWindow
     {
         OptimizationTool optimize = new OptimizationTool();
 
@@ -35,7 +35,7 @@ namespace PerfectParallel.CourseForge.UI
 
         public void getRect(float x, float y, int width, int height)
         {
-            window = new Rect(x - width/2, y - height/2, width, height);
+            window = new Rect(x - width / 2, y - height / 2, width, height);
         }
         public void getResults(List<int> getOutput, List<string> getMessage)
         {
@@ -82,7 +82,7 @@ namespace PerfectParallel.CourseForge.UI
                 }
                 if (output.Count != 0)
                 {
-                    MyWindow results = EditorWindow.CreateInstance<MyWindow>();
+                    AndroidWindow results = EditorWindow.CreateInstance<AndroidWindow>();
                     results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
                     results.getResults(output, message);
                     results.Focus();
@@ -104,7 +104,7 @@ namespace PerfectParallel.CourseForge.UI
                 if (buildLogExists)
                 {
                     EditorGUI.LabelField(new Rect(0, 10, this.position.width, 18), "Optimize for Android", centeredBold);
-                    build = EditorGUI.ToggleLeft(new Rect(10, 30, this.position.width, 18), "Build after optimization", build, EditorStyles.boldLabel);
+                    build = EditorGUI.ToggleLeft(new Rect(10, 30, this.position.width, 18), "Build After Optimization", build, EditorStyles.boldLabel);
                     removeUnused = EditorGUI.ToggleLeft(new Rect(10, 50, this.position.width, 18), "Remove Unused Assets", removeUnused, EditorStyles.boldLabel);
                     EditorGUI.BeginDisabledGroup(removeUnused == false || build == false);
                     revertRU = EditorGUI.ToggleLeft(new Rect(30, 70, this.position.width, 18), "Revert After Build", revertRU);
@@ -146,7 +146,7 @@ namespace PerfectParallel.CourseForge.UI
                         }
                         if (output.Count != 0)
                         {
-                            MyWindow results = EditorWindow.CreateInstance<MyWindow>();
+                            AndroidWindow results = EditorWindow.CreateInstance<AndroidWindow>();
                             results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
                             results.getResults(output, message);
                             results.Focus();
@@ -158,7 +158,8 @@ namespace PerfectParallel.CourseForge.UI
                 else
                 {
                     EditorGUI.LabelField(new Rect(0, 10, this.position.width, 18), "Optimize for Android", centeredBold);
-                    EditorGUI.LabelField(new Rect(0, 45, this.position.width, 18), "Please build an output log.", centeredBold);
+                    EditorGUI.LabelField(new Rect(0, 55, this.position.width, 18), "Please build an output log.", centeredBold);
+                    EditorGUI.LabelField(new Rect(0, 100, this.position.width, 36), "If prompted to save scene, select cancel to continue build.", centeredWrapped);
                     if (GUI.Button(new Rect(125, 200, 100, 18), "Build Log"))
                     {
                         buildLogExists = true;
