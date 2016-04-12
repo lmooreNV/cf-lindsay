@@ -31,9 +31,9 @@ namespace PerfectParallel.CourseForge.UI
             MovePixels(0, 1);
             Background(6, 0.6f, 0.75f);
             {
-                Label("  Android", 2.5f);
-                Move(2.5f, 0);
-                if (Button("test", 1.6f, 0.6f))
+                Label("  Android Optimization Tool", 4);
+                Move(4.2f, 0);
+                if (Button("Open Menu", 1.8f, 0.6f))
                 {
                     MyWindow window = EditorWindow.CreateInstance<MyWindow>();
                     window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 240, 240);
@@ -41,7 +41,7 @@ namespace PerfectParallel.CourseForge.UI
                     window.getMenu(true);
                     window.ShowPopup();
                 }
-                Move(-2.5f, 0);
+                Move(-4.2f, 0);
                 Move(0, 0.5f);
             }
             #endregion 

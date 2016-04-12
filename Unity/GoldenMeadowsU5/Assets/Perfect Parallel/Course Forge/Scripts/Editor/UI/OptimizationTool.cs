@@ -142,11 +142,13 @@ namespace PerfectParallel.CourseForge.UI
                     {
                         texImporter.SetPlatformTextureSettings("Android", 512, TextureImporterFormat.AutomaticCompressed);
                         AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+                        numResized++;
                     }
                     else
                     {
                         texImporter.SetPlatformTextureSettings("Android", 128, TextureImporterFormat.AutomaticCompressed);
                         AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+                        numResized++;
                     }
                 }
             }
@@ -398,6 +400,7 @@ namespace PerfectParallel.CourseForge.UI
         {
             if (File.Exists(file))
             {
+                Debug.Log("Reverting changes from " + file);
                 List<String> revertFiles = new List<String>();
                 FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 StreamReader sr = new StreamReader(fs);
@@ -446,7 +449,7 @@ namespace PerfectParallel.CourseForge.UI
                     File.Copy(path + ".meta", "Removed Assets/" + path + ".meta");
                 }
                 File.AppendAllText("Removed Assets/materials.txt", path + "\r\n");
-                return copied++;
+                return copied + 1;
             }
             else
             {
