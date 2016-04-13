@@ -29,7 +29,7 @@ namespace PerfectParallel.CourseForge.UI
 
             Move(0, 0.5f);
             MovePixels(0, 1);
-            Background(6, 0.6f, 0.75f);
+            Background(6, 1, 0.75f);
             {
                 Label("  Android Optimization Tool", 4);
                 Move(4.2f, 0);
@@ -41,8 +41,19 @@ namespace PerfectParallel.CourseForge.UI
                     window.getMenu(true);
                     window.ShowPopup();
                 }
+                Move(-4.2f, 0.4f);
+                Label("  Standalone Optimization Tool", 4);
+                Move(4.2f, 0);
+                if (Button("Open Menu", 1.8f, 0.6f))
+                {
+                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
+                    window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 240, 240);
+                    window.getBuildLog(optimize.buildLog());
+                    window.getMenu(true);
+                    window.ShowPopup();
+                }
                 Move(-4.2f, 0);
-                Move(0, 0.5f);
+                Move(0, 0.6f);
             }
             #endregion 
             #region Asset Removal
@@ -50,7 +61,7 @@ namespace PerfectParallel.CourseForge.UI
 
             Move(0, 0.5f);
             MovePixels(0, 1);
-            Background(6, 1.0f, 0.75f);
+            Background(6, 1.5f, 0.75f);
             {
                 Label("  Build Output Log", 2.5f);
                 Move(2.5f, 0);
@@ -82,10 +93,31 @@ namespace PerfectParallel.CourseForge.UI
                 }
                 Move(-4.2f, 0);
             }
+            Move(0, 0.4f);
+            Label("  Duplicate Textures", 3.5f);
+            Move(2.5f, 0);
+            if (Button("Remove", 1.6f, 0.6f))
+            {
+                AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
+                window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
+                List<int> output = new List<int>();
+                List<string> message = new List<string>();
+                output.Add(optimize.removeTextures());
+                message.Add(" redundant textures removed.");
+                window.getResults(output, message);
+                window.Focus();
+                window.ShowPopup();
+            }
+            Move(1.7f, 0);
+            if (Button("Revert", 1.6f, 0.6f))
+            {
+                optimize.revertOptimizations("Removed Assets/duplicateTextures.txt");
+            }
+            Move(-4.2f, 0);
             #endregion
 
             MoveToTop();
-            Move(0, 4.5f);
+            Move(0, 5.5f);
             MovePixels(0, 1);
             Move(0, -1.0f);
 
@@ -135,35 +167,6 @@ namespace PerfectParallel.CourseForge.UI
                 Move(-4.2f, 0);
             }
             Move(0, 0.5f);
-            #endregion
-
-            #region Redundant Textures
-            Label("| Remove Redundant Textures", 4.0f);
-            Move(0, 0.5f);
-            MovePixels(0, 1);
-            Background(6, 0.6f, 0.75f);
-            {
-                Label("  Textures", 2.5f);
-                Move(2.5f, 0);
-                if (Button("Remove", 1.6f, 0.6f))
-                {
-                    AndroidWindow window = EditorWindow.CreateInstance<AndroidWindow>();
-                    window.getRect(EditorWindow.focusedWindow.position.x + EditorWindow.focusedWindow.position.width / 2, EditorWindow.focusedWindow.position.y + EditorWindow.focusedWindow.position.height / 2, 400, 150);
-                    List<int> output = new List<int>();
-                    List<string> message = new List<string>();
-                    output.Add(optimize.removeTextures());
-                    message.Add(" redundant textures removed.");
-                    window.getResults(output, message);
-                    window.Focus();
-                    window.ShowPopup();
-                }
-                Move(1.7f, 0);
-                if (Button("Revert", 1.6f, 0.6f))
-                {
-                    optimize.revertOptimizations("Removed Assets/duplicateTextures.txt");
-                }
-            }
-            MovePixels(-1, 0);
             #endregion
             EndUI();
         }
