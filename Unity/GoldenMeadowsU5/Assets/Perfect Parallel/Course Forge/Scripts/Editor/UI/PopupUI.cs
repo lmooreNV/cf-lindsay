@@ -83,12 +83,10 @@ namespace PerfectParallel.CourseForge.UI
                 }
                 if (output.Count != 0)
                 {
-                    AndroidWindow results = EditorWindow.CreateInstance<AndroidWindow>();
-                    results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
-                    results.getResults(output, message);
-                    results.Focus();
-                    results.ShowPopup();
-                    this.Close();
+                    this.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
+                    this.getResults(output, message);
+                    this.isMenu = false;
+                    this.Focus();
                 }
             }
 
@@ -148,12 +146,10 @@ namespace PerfectParallel.CourseForge.UI
                         }
                         if (output.Count != 0)
                         {
-                            AndroidWindow results = EditorWindow.CreateInstance<AndroidWindow>();
-                            results.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
-                            results.getResults(output, message);
-                            results.Focus();
-                            results.ShowPopup();
-                            this.Close();
+                            this.getRect(this.position.x + this.position.width / 2, this.position.y + this.position.height / 2, 400, 30 * (output.Count + 4));
+                            this.getResults(output, message);
+                            this.isMenu = false;
+                            this.Focus();
                         }
                     }
                 }
