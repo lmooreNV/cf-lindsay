@@ -20,6 +20,7 @@ namespace PerfectParallel.CourseForge.UI
         bool revertOM = false;
         bool removeTextures = false;
         bool revertRT = false;
+        bool buildComplete = false;
         string scene = EditorApplication.currentScene;
         bool isMenu = false;
         int progress = 0;
@@ -65,17 +66,17 @@ namespace PerfectParallel.CourseForge.UI
             while (MainToolUI.EnableValidate() && scene == EditorApplication.currentScene)
             {
                 MainToolUI.EnablePerform();
-                if (revertRU)
+                if (revertRU && buildComplete)
                 {
                     optimize.revertOptimizations("Removed Assets/removedAssets.txt");
                     revertRU = false;
                 }
-                if (revertOM)
+                if (revertOM && buildComplete)
                 {
                     optimize.revertOptimizations("Removed Assets/materials.txt");
                     revertOM = false;
                 }
-                if (revertRT)
+                if (revertRT && buildComplete)
                 {
                     optimize.revertOptimizations("Removed Assets/duplicateTextures.txt");
                     revertRT = false;
@@ -142,6 +143,7 @@ namespace PerfectParallel.CourseForge.UI
                         }
                         if (build)
                         {
+                            buildComplete = true;
                             optimize.build();
                         }
                         if (output.Count != 0)
